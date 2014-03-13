@@ -8,7 +8,9 @@ package
 		[Embed(source='../assets/graphics/bloodEffect.png')] public static const GRAPHICS_BLOODEFFECT:Class;
 		[Embed(source='../assets/graphics/bloodSplatter.png')] public static const GRAPHICS_BLOODSPLATTER:Class;
 		[Embed(source='../assets/graphics/clouds.png')] public static const GRAPHICS_CLOUDS:Class;
+		[Embed(source='../assets/graphics/creditsJxlod.png')] public static const GRAPHICS_CREDITSJXLOD:Class;
 		[Embed(source='../assets/graphics/floor.png')] public static const GRAPHICS_FLOOR:Class;
+		[Embed(source='../assets/graphics/floor_plus.png')] public static const GRAPHICS_FLOOR_PLUS:Class;
 		[Embed(source='../assets/graphics/food.png')] public static const GRAPHICS_FOOD:Class;
 		[Embed(source='../assets/graphics/gameover.png')] public static const GRAPHICS_GAMEOVER:Class;
 		[Embed(source='../assets/graphics/gringa.png')] public static const GRAPHICS_GRINGA:Class;
@@ -17,9 +19,9 @@ package
 		[Embed(source='../assets/graphics/spike.png')] public static const GRAPHICS_SPIKE:Class;
 		[Embed(source='../assets/graphics/spike2.png')] public static const GRAPHICS_SPIKE2:Class;
 		[Embed(source='../assets/graphics/title.png')] public static const GRAPHICS_TITLE:Class;
-		[Embed(source='../assets/graphics/wallUp.png')] public static const GRAPHICS_WALLUP:Class;
 		[Embed(source='../assets/graphics/wall_down.png')] public static const GRAPHICS_WALL_DOWN:Class;
-		public static const GRAPHICS:Array = [GRAPHICS_BLOODEFFECT, GRAPHICS_BLOODSPLATTER, GRAPHICS_CLOUDS, GRAPHICS_FLOOR, GRAPHICS_FOOD, GRAPHICS_GAMEOVER, GRAPHICS_GRINGA, GRAPHICS_GRINGA_, GRAPHICS_HUDBAR, GRAPHICS_SPIKE, GRAPHICS_SPIKE2, GRAPHICS_TITLE, GRAPHICS_WALLUP, GRAPHICS_WALL_DOWN];
+		[Embed(source='../assets/graphics/wallUp.png')] public static const GRAPHICS_WALLUP:Class;
+		public static const GRAPHICS:Array = [GRAPHICS_BLOODEFFECT, GRAPHICS_BLOODSPLATTER, GRAPHICS_CLOUDS, GRAPHICS_CREDITSJXLOD, GRAPHICS_FLOOR, GRAPHICS_FLOOR_PLUS, GRAPHICS_FOOD, GRAPHICS_GAMEOVER, GRAPHICS_GRINGA, GRAPHICS_GRINGA_, GRAPHICS_HUDBAR, GRAPHICS_SPIKE, GRAPHICS_SPIKE2, GRAPHICS_TITLE, GRAPHICS_WALL_DOWN, GRAPHICS_WALLUP];
 
 		/* --- sounds --- */
 		[Embed(source='../assets/sounds/death.mp3')] public static const SOUNDS_DEATH:Class;

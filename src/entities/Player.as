@@ -42,6 +42,8 @@ package  entities
 		public static var isAlive:Boolean;
 		public static var timeToDeath:Number;
 		public static var life:Number;
+		public var timeStayingUp:Number;
+		public var timeStayingDown:Number;
 		
 		private var shakeFreqY:Number = 10;
 		private var shakeSizeX:Number = 3;
@@ -54,6 +56,8 @@ package  entities
 		private var lastY:Number;
 		private var effect:Emitter;
 		private var initialLife:Number;
+		private var limitDown:Number;
+		public static var SCORE:int;
 		public function Player(isGame:Boolean=true) 
 		{
 			super(FP.width - sprite.width-100, FP.height-sprite.height-200);
@@ -69,6 +73,9 @@ package  entities
 			
 			life = timeToDeath * Math.round(FP.assignedFrameRate);
 			initialLife = life;
+			timeStayingDown=timeStayingUp = 0;
+			limitDown = FP.height - 50;
+			SCORE = 0;
 		}
 		override public function added():void
 		{
@@ -88,9 +95,17 @@ package  entities
 					{
 						moving();
 						if (y >= 150 && y < 250) layer = 7; //Layer between first wall and first spikes row
-						if (y >= 250 && y < 300) layer = 3; //Layer between first spikes row and second spikes row
-						if (y >= 300 && y < 400) layer = -3; //Layer between second spikes row and third spikes row
-						if (y >= 425 && y < FP.height - 50) layer = -7; //Layer between thirds spikes row and second wall
+						if (y >= 250 && y < 350) layer = 3; //Layer between first spikes row and second spikes row
+						if (y >= 350 && y < 450) layer = -3; //Layer between second spikes row and third spikes row
+						if (y >= 450 && y < limitDown) layer = -7; //Layer between thirds spikes row and second wall
+						
+						//Verify player stay not much time in the wall Up
+						if (y >= 150 && y < 300) timeStayingUp += FP.elapsed;
+						else timeStayingUp = 0;
+						
+						//Verify player stay not much time in the wall Down
+						if (y >= 450) timeStayingDown += FP.elapsed;
+						else timeStayingDown = 0;
 					}
 				break;
 			case BEDYING:
@@ -189,8 +204,18 @@ package  entities
 			{
 				eatSFX.play();
 				life += f.power;
+				SCORE++;
+				trace("Score Player: " + SCORE);
 				if (life >= initialLife) life = initialLife;
 				f.destroy();
+			}
+			var b:BonusSpike = BonusSpike(collide("Bonus", x, y));
+			if (b)
+			{
+				//eatSFX.play();
+				SCORE += b.Scorevalue;
+				trace("Score Player: " + SCORE);
+				FP.world.remove(b);
 			}
 			if (life >= 0) life--;
 			else killPlayer();

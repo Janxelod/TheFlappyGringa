@@ -13,6 +13,7 @@ package entities
 	{
 		private var sprite:Spritemap = new Spritemap(Assets.GRAPHICS_SPIKE,116,213);
 		private var speedX:Number;
+		public static var widthHitBox:Number;
 		public function Spike(x:Number,y:Number,layer:int,speedX:Number) 
 		{
 			super(x, y);
@@ -23,7 +24,9 @@ package entities
 			graphic = sprite;
 			this.layer = layer;
 			this.speedX = speedX;
-			setHitbox(sprite.width / 2.5, 15, 25, 15);
+			widthHitBox = sprite.width / 2.5;
+			setHitbox(widthHitBox, 15, 25, 15);
+			
 			type = "spike";
 			sprite.add("stand", [0,1,2],10   , true);
 			sprite.play("stand");

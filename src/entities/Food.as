@@ -31,7 +31,7 @@ package entities
 			this.layer = layer;
 			power = (GameWorld.MODE == GameWorld.AGRESSIVE)?GD.EnergyTimeToAgressiveMode:GD.EnergyTimeToNormalMode;
 			power *= Math.round(FP.frameRate);
-			trace("Power: " + power);
+			//trace("Power: " + power);
 			setHitbox(image.scaledWidth, image.scaledHeight, image.scaledWidth/2, image.scaledHeight/2);
 		}
 		

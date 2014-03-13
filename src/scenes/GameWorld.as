@@ -28,6 +28,9 @@ package  scenes
 		private var normalColor:uint=0x31eee3;
 		private var agressiveColor:uint = 0x5a5d56;
 		private var isGameOver:Boolean = false;
+		private var playerRef:Player;
+		private var maxTimePermitedStayUp:Number=2;
+		private var maxTimePermitedStayDown:Number=3.5;
 		public function GameWorld() 
 		{
 			super();
@@ -53,7 +56,7 @@ package  scenes
 			}
 			add(new Floor(0, 175));
 			add(new WallUp(50,150));
-			add(new Player());	
+			playerRef=Player(add(new Player()));	
 			add(new WallDown(50, FP.height));
 			barHud=new HudBar(0,265);
 			add(barHud);
@@ -67,24 +70,46 @@ package  scenes
 			{
 				if (Player.isAlive)
 				{
-					
 					var canCreateFood:int;
-					var tempRow:Entity;
-					var spikePerRow:int = (MODE == AGRESSIVE)?(FP.rand(2) + 1):(FP.rand(1) + 1);
+					var tempRow:Entity;	
+					var spikePerRow:int = (MODE == AGRESSIVE)?(FP.rand(3) + 1):(FP.rand(2) + 1);
 					var spikeCol:Array = [ 1, 2, 3 ];
+					var lastSpikeRow:int = int.MAX_VALUE;
 					FP.shuffle(spikeCol);
-					
-					for (var i:int = 0; i < spikePerRow; i++ )
+					for (var i:uint = 0; i < spikePerRow; i++ )
 					{
 						var spikeRow:int = spikeCol[i];
+						if (Math.abs(lastSpikeRow - spikeRow) == 1 && spikePerRow==2) 
+						{
+							if ((lastSpikeRow == 1 && spikeRow == 2) || (lastSpikeRow == 2 && spikeRow == 1))
+							{
+								add(new BonusSpike(tempRow.x, 295, tempRow.layer, GD.GlobalSpeedX));
+							}
+							if ((lastSpikeRow == 2 && spikeRow == 3) || (lastSpikeRow == 3 && spikeRow == 2))
+							{
+								add(new BonusSpike(tempRow.x, 395, tempRow.layer, GD.GlobalSpeedX));
+							}
+						}
+						if (spikePerRow == 3 && i==2)
+						{
+							add(new BonusSpike(tempRow.x, 295, tempRow.layer, GD.GlobalSpeedX));
+							add(new BonusSpike(tempRow.x, 395, tempRow.layer, GD.GlobalSpeedX));
+						}
 						switch(spikeRow)
 						{
 							case 1: 
-								tempRow=add(new Spike( -100, 250, 5, GD.GlobalSpeedX)); 
-								canCreateFood = FP.rand(10);
-								if (canCreateFood > 3)
+								tempRow = add(new Spike( -100, 250, 5, GD.GlobalSpeedX)); 
+								if (playerRef.timeStayingUp < maxTimePermitedStayUp)
 								{
-									add(new Food(tempRow.x - 100, tempRow.y-20, tempRow.layer, GD.GlobalSpeedX));
+									canCreateFood = FP.rand(10);
+									if (canCreateFood > 4)
+									{
+										add(new Food(tempRow.x - 100, tempRow.y-20, tempRow.layer, GD.GlobalSpeedX));
+									}
+									else if (spikePerRow==1)
+									{
+										add(new Food(tempRow.x - 100, tempRow.y-20, tempRow.layer, GD.GlobalSpeedX));
+									}
 								}
 							break;
 							case 2: 
@@ -93,17 +118,28 @@ package  scenes
 								if (canCreateFood > 5)
 								{
 									add(new Food(tempRow.x - 100, tempRow.y-20, tempRow.layer, GD.GlobalSpeedX));
+								}else if (spikePerRow==1)
+								{
+									add(new Food(tempRow.x - 100, tempRow.y-20, tempRow.layer, GD.GlobalSpeedX));
 								}
 							break;
 							case 3: 
 								tempRow=add(new Spike( -100, 450, -5, GD.GlobalSpeedX)); 
 								canCreateFood = FP.rand(10);
-								if (canCreateFood > 7)
+								if (playerRef.timeStayingDown < maxTimePermitedStayDown)
 								{
-									add(new Food(tempRow.x - 100, tempRow.y-20, tempRow.layer, GD.GlobalSpeedX));
+									//trace("TimeStayingDown: " + playerRef.timeStayingDown);
+									if (canCreateFood > 7)
+									{
+										add(new Food(tempRow.x - 100, tempRow.y-20, tempRow.layer, GD.GlobalSpeedX));
+									}else if (spikePerRow==1)
+									{
+										add(new Food(tempRow.x - 100, tempRow.y-20, tempRow.layer, GD.GlobalSpeedX));
+									}
 								}
 							break;
 						}
+						lastSpikeRow = spikeRow;
 					}
 					
 					spikeSFX.play();
