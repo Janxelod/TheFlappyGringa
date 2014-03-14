@@ -1,4 +1,4 @@
-TheFlappyGringa
+The Flappy Gringa
 ===============
 
 Game made during the MiniLD 49, in a interval of 3 weeks.
