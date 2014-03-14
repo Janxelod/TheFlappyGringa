@@ -6,7 +6,7 @@ Thanks to:
 	-La Gringa for beeing my inspiration, she has a Facebook account and  is very loved by my schoolmates, 
 	this is her Facebook account: https://www.facebook.com/gringa.fisi .
 
-A little explanation:
+A little story:
 	La Gringa is sleeping after many disturbs happend in the faculty she lives in.
 	She dreams a nightmare where she is scaping from the Aliens that confuse her by a Cow for experiments.
 	The Worst thing is she needs to eat very quickly or she will die... and also has to avoid that kinda
@@ -14,3 +14,11 @@ A little explanation:
 	
 	You must help her scaping or waking up from this Nightmare!
 		
+Instructions:
+	Just Press Space to move.
+	Avoid Trunk Mecha Saws.
+	Always try to eat food.
+	If you dont feed La Gringa You, yes you! Will kill La Gringa.
+
+Starring:
+	La Gringa
