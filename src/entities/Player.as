@@ -58,6 +58,7 @@ package  entities
 		private var initialLife:Number;
 		private var limitDown:Number;
 		public static var SCORE:int;
+		public static var posGlobalX:Number;
 		public function Player(isGame:Boolean=true) 
 		{
 			super(FP.width - sprite.width-100, FP.height-sprite.height-200);
@@ -76,6 +77,7 @@ package  entities
 			timeStayingDown=timeStayingUp = 0;
 			limitDown = FP.height - 50;
 			SCORE = 0;
+			posGlobalX = this.x;
 		}
 		override public function added():void
 		{
@@ -124,7 +126,8 @@ package  entities
 				break;
 			}
 			
-			
+			posGlobalX = x;
+			posGlobalY = y;
 		}
 		
 		private function emitEffect():void 
@@ -204,8 +207,8 @@ package  entities
 			{
 				eatSFX.play();
 				life += f.power;
-				SCORE++;
-				trace("Score Player: " + SCORE);
+				
+				HudScore.getInstance().setScore(1);
 				if (life >= initialLife) life = initialLife;
 				f.destroy();
 			}
@@ -213,8 +216,9 @@ package  entities
 			if (b)
 			{
 				//eatSFX.play();
-				SCORE += b.Scorevalue;
-				trace("Score Player: " + SCORE);
+				HudScore.getInstance().setScore(b.Scorevalue);
+				if (GameWorld.MODE == GameWorld.AGRESSIVE) GameWorld(world).startLighting();
+				//trace("Score Player: " + SCORE);
 				FP.world.remove(b);
 			}
 			if (life >= 0) life--;
@@ -231,7 +235,7 @@ package  entities
 			FP.world.getAll(entites);
 			for each(var e:Entity in entites)
 			{
-				if(e!=this) e.active = false;
+				if(e!=this && e.type!="score") e.active = false;
 			}
 		}
 		override public function moveCollideY(e:Entity):Boolean 

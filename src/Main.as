@@ -15,7 +15,7 @@ package
 	[Frame(factoryClass="Preloader")]
 	public class Main extends Engine 
 	{
-		private var isModeDevelop:Boolean = true;
+		private var isModeDevelop:Boolean = false;
 		public function Main():void 
 		{
 			super(768, 512, 60, false);

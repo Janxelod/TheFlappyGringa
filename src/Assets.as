@@ -16,18 +16,21 @@ package
 		[Embed(source='../assets/graphics/gringa.png')] public static const GRAPHICS_GRINGA:Class;
 		[Embed(source='../assets/graphics/gringa_.png')] public static const GRAPHICS_GRINGA_:Class;
 		[Embed(source='../assets/graphics/hudbar.png')] public static const GRAPHICS_HUDBAR:Class;
+		[Embed(source='../assets/graphics/skyLighting.png')] public static const GRAPHICS_SKYLIGHTING:Class;
 		[Embed(source='../assets/graphics/spike.png')] public static const GRAPHICS_SPIKE:Class;
 		[Embed(source='../assets/graphics/spike2.png')] public static const GRAPHICS_SPIKE2:Class;
 		[Embed(source='../assets/graphics/title.png')] public static const GRAPHICS_TITLE:Class;
 		[Embed(source='../assets/graphics/wall_down.png')] public static const GRAPHICS_WALL_DOWN:Class;
 		[Embed(source='../assets/graphics/wallUp.png')] public static const GRAPHICS_WALLUP:Class;
-		public static const GRAPHICS:Array = [GRAPHICS_BLOODEFFECT, GRAPHICS_BLOODSPLATTER, GRAPHICS_CLOUDS, GRAPHICS_CREDITSJXLOD, GRAPHICS_FLOOR, GRAPHICS_FLOOR_PLUS, GRAPHICS_FOOD, GRAPHICS_GAMEOVER, GRAPHICS_GRINGA, GRAPHICS_GRINGA_, GRAPHICS_HUDBAR, GRAPHICS_SPIKE, GRAPHICS_SPIKE2, GRAPHICS_TITLE, GRAPHICS_WALL_DOWN, GRAPHICS_WALLUP];
+		public static const GRAPHICS:Array = [GRAPHICS_BLOODEFFECT, GRAPHICS_BLOODSPLATTER, GRAPHICS_CLOUDS, GRAPHICS_CREDITSJXLOD, GRAPHICS_FLOOR, GRAPHICS_FLOOR_PLUS, GRAPHICS_FOOD, GRAPHICS_GAMEOVER, GRAPHICS_GRINGA, GRAPHICS_GRINGA_, GRAPHICS_HUDBAR, GRAPHICS_SKYLIGHTING, GRAPHICS_SPIKE, GRAPHICS_SPIKE2, GRAPHICS_TITLE, GRAPHICS_WALL_DOWN, GRAPHICS_WALLUP];
 
 		/* --- sounds --- */
 		[Embed(source='../assets/sounds/death.mp3')] public static const SOUNDS_DEATH:Class;
 		[Embed(source='../assets/sounds/eating_food.mp3')] public static const SOUNDS_EATING_FOOD:Class;
+		[Embed(source='../assets/sounds/Pickup_Coin2.mp3')] public static const SOUNDS_PICKUP_COIN2:Class;
+		[Embed(source='../assets/sounds/Randomize32.mp3')] public static const SOUNDS_RANDOMIZE32:Class;
 		[Embed(source='../assets/sounds/spike.mp3')] public static const SOUNDS_SPIKE:Class;
 		[Embed(source='../assets/sounds/spikeiskillyingme.mp3')] public static const SOUNDS_SPIKEISKILLYINGME:Class;
-		public static const SOUNDS:Array = [SOUNDS_DEATH, SOUNDS_EATING_FOOD, SOUNDS_SPIKE, SOUNDS_SPIKEISKILLYINGME];
+		public static const SOUNDS:Array = [SOUNDS_DEATH, SOUNDS_EATING_FOOD, SOUNDS_PICKUP_COIN2, SOUNDS_RANDOMIZE32, SOUNDS_SPIKE, SOUNDS_SPIKEISKILLYINGME];
 	}
 }

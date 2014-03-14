@@ -4,6 +4,7 @@ package entities
 	import net.flashpunk.FP;
 	import net.flashpunk.Graphic;
 	import net.flashpunk.Mask;
+	import scenes.GameWorld;
 	
 	/**
 	 * ...
@@ -20,6 +21,7 @@ package entities
 			type = "Bonus";
 			this.speedX = speedX;
 			centerOrigin();
+			Scorevalue=(GameWorld.MODE == GameWorld.AGRESSIVE)?2:1;
 		}
 		override public function update():void
 		{

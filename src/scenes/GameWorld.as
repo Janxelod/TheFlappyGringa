@@ -30,16 +30,19 @@ package  scenes
 		private var isGameOver:Boolean = false;
 		private var playerRef:Player;
 		private var maxTimePermitedStayUp:Number=2;
-		private var maxTimePermitedStayDown:Number=3.5;
+		private var maxTimePermitedStayDown:Number = 3.5;
+		private var score:Text;
+		private var skyLighting:SkyLighting;
 		public function GameWorld() 
 		{
 			super();
 		}
 		override public function begin():void
 		{
-			var cloud:Cloud
+			var cloud:Cloud;
 			if (GameWorld.MODE == GameWorld.AGRESSIVE)
 			{
+				skyLighting = SkyLighting(add(new SkyLighting()));
 				cloud = Cloud(add(new Cloud(0, 15)));
 				timeToAppear = 0.75;
 				currentColor = agressiveColor;
@@ -60,6 +63,11 @@ package  scenes
 			add(new WallDown(50, FP.height));
 			barHud=new HudBar(0,265);
 			add(barHud);
+			add(HudScore.getInstance());
+		}
+		public function startLighting():void
+		{
+			skyLighting.appear();
 		}
 		override public function update():void
 		{
